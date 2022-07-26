@@ -7,7 +7,12 @@ public class WordCounter {
 
     public static Map<String, Integer> wordsCount(String str) {
 
-        String[] words = str.trim().replaceAll("\\p{IsPunctuation}", "").split(" ");
+        String[] words = str.replaceAll("\\d", "")
+                .replaceAll("[\\s]{2,}", " ")
+                .trim()
+                .toLowerCase()
+                .replaceAll("\\p{IsPunctuation}", "")
+                .split(" ");
 
         Map<String, Integer> count = new HashMap<>();
         for (String t : words) {
